@@ -1,25 +1,27 @@
+def remover_pontuacao(cpf):
+    return cpf.replace(".", "").replace("-", "")
+
+
+def calcular_digito(digitos, peso_inicial):
+    soma = 0
+    peso = peso_inicial
+    for digito in digitos:
+        soma += int(digito) * peso
+        peso -= 1
+    resto = soma % 11
+    if resto < 2:
+        return 0
+    return 11 - resto
+
+
 def validar_cpf(cpf):
-    numeros = cpf.strip().replace(".", "").replace("-", "")
+    numeros = remover_pontuacao(cpf.strip())
     if len(numeros) != 11 or not numeros.isdigit():
         return False
     if numeros == numeros[0] * 11:
         return False
-    soma = 0
-    peso = 10
-    for digito in numeros[:9]:
-        soma += int(digito) * peso
-        peso -= 1
-    resto = soma % 11
-    digito1 = 0 if resto < 2 else 11 - resto
-    if digito1 != int(numeros[9]):
+    if calcular_digito(numeros[:9], 10) != int(numeros[9]):
         return False
-    soma = 0
-    peso = 11
-    for digito in numeros[:10]:
-        soma += int(digito) * peso
-        peso -= 1
-    resto = soma % 11
-    digito2 = 0 if resto < 2 else 11 - resto
-    if digito2 != int(numeros[10]):
+    if calcular_digito(numeros[:10], 11) != int(numeros[10]):
         return False
     return True
