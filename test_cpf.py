@@ -19,3 +19,7 @@ def test_rejeita_digitos_todos_iguais():
 
 def test_aceita_pontuacao():
     assert validar_cpf("529.982.247-25") is True
+
+
+def test_rejeita_letras_no_meio():
+    assert validar_cpf("529.98A.247-25") is False
