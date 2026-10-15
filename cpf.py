@@ -1,2 +1,2 @@
 def validar_cpf(cpf):
-    pass
+    return False
