@@ -23,3 +23,7 @@ def test_aceita_pontuacao():
 
 def test_rejeita_letras_no_meio():
     assert validar_cpf("529.98A.247-25") is False
+
+
+def test_ignora_espacos_nas_pontas():
+    assert validar_cpf(" 529.982.247-25 ") is True
