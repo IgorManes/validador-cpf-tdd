@@ -27,3 +27,7 @@ def test_rejeita_letras_no_meio():
 
 def test_ignora_espacos_nas_pontas():
     assert validar_cpf(" 529.982.247-25 ") is True
+
+
+def test_rejeita_primeiro_digito_errado():
+    assert validar_cpf("529.982.247-35") is False
