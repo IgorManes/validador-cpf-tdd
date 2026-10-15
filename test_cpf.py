@@ -31,3 +31,7 @@ def test_ignora_espacos_nas_pontas():
 
 def test_rejeita_primeiro_digito_errado():
     assert validar_cpf("529.982.247-35") is False
+
+
+def test_rejeita_segundo_digito_errado():
+    assert validar_cpf("529.982.247-26") is False
