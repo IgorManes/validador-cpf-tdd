@@ -11,3 +11,7 @@ def test_rejeita_texto_vazio():
 
 def test_rejeita_menos_de_11_digitos():
     assert validar_cpf("1234567890") is False
+
+
+def test_rejeita_digitos_todos_iguais():
+    assert validar_cpf("11111111111") is False
