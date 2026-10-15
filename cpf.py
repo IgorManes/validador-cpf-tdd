@@ -1,2 +1,3 @@
 def validar_cpf(cpf):
-    return False
+    numeros = cpf.replace(".", "").replace("-", "")
+    return len(numeros) == 11
